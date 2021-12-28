@@ -11,13 +11,13 @@ var
   sl              : TStringlist;
   line            : string;
 begin
-   sl := Tstringlist.Create;
+   Regex := TRegex.create(regex_pattern);
+   sl    := Tstringlist.Create;
 
    writeln;
    sl.loadfromfile('..\..\reg_test_1.txt');
    for line in sl do  begin
       //writeln(line);
-      Regex := TRegex.create(regex_pattern);
       MatchCollection := Regex.Matches(line);
       for x := 0 to MatchCollection.Count-1 do begin
           writeln(x.tostring, '  ', MatchCollection.item[x].value);
@@ -29,7 +29,6 @@ begin
    sl.loadfromfile('..\..\reg_test_2.txt');
    for line in sl do  begin
       //writeln(line);
-      Regex := TRegex.create(regex_pattern);
       MatchCollection := Regex.Matches(line);
       for x := 0 to MatchCollection.Count-1 do begin
           writeln(x.tostring, '  ', MatchCollection.item[x].value);
